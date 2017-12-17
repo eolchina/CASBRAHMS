@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Collector;
 
 class CollectorsTableSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class CollectorsTableSeeder extends Seeder
      */
     public function run()
     {
-        $collectors = factory(Collectors::class)->times(50)->make();
+        $collectors = factory(Collector::class)->times(50)->make();
         Collector::insert($collectors->toArray());
     }
 }

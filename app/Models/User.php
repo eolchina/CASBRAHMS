@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPassword;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRolesAndAbilities;
 
     /**
      * The attributes that are mass assignable.
@@ -40,5 +42,10 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
     }
 }
