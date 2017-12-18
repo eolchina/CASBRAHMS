@@ -48,6 +48,7 @@
         </section>
     </div>
 </div>
+@include('partials.footer')
 
 {!! Form::open(['route' => 'auth.logout', 'style' => 'display:none;', 'id' => 'logout']) !!}
 <button type="submit">Logout</button>

@@ -51,6 +51,14 @@
             </li>
             @endcan
 
+            @include('partials.sidebar_system')
+            @include('partials.sidebar_data')
+            @include('partials.sidebar_user')
+            @include('partials.sidebar_visual')
+            @include('partials.sidebar_map')
+
+
+         <!-- Change logged user pass -->
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
                     <i class="fa fa-key"></i>
