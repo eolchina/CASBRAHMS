@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Silber\Bouncer\Database\HasRolesAndAbilities;
+use Silber\Bouncer\Database;
 
 class RolesTableSeeder extends Seeder
 {
