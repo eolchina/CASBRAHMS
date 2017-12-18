@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         $user->password = bcrypt('password');
         // $user->is_admin = true;
         // $user->activated = true;
-        $user->assign('administrator')
+        $user->assign('administrator');
         $user->save();
     }
 }
