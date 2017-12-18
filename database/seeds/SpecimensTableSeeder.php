@@ -13,7 +13,7 @@ class SpecimensTableSeeder extends Seeder
      */
     public function run()
     {
-        $collection_ids = ['1', '2', '3'];
+        $collection_ids = ['1', '2', '3', '4', '5'];
         $faker = app(Faker\Generator::class);
         $specimens = factory(Specimen::class)->times(100)->make()->each(function ($specimen) use ($faker, $collection_ids){
             $specimen->collection_id = $faker->randomElement($collection_ids);
