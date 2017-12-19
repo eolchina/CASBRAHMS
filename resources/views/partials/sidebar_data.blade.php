@@ -10,7 +10,7 @@
     <ul class="treeview-menu">
 
         <li class="{{ $request->segment(2) == 'herbariums' ? 'active active-sub' : '' }}">
-            <a href="{{ route('herbariums.index') }}">
+            <a href="{{ route('data.herbariums.index') }}">
                 <i class="fa fa-briefcase"></i>
                 <span class="title">
                     @lang('global.herbariums.title')
@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="{{ $request->segment(2) == 'collectors' ? 'active active-sub' : '' }}">
-            <a href="{{ route('collectors.index') }}">
+            <a href="{{ route('data.collectors.index') }}">
                 <i class="fa fa-briefcase"></i>
                 <span class="title">
                     @lang('global.collectors.title')
@@ -26,7 +26,7 @@
             </a>
         </li>
         <li class="{{ $request->segment(2) == 'users' ? 'active active-sub' : '' }}">
-            <a href="{{ route('collections.index') }}">
+            <a href="{{ route('data.collections.index') }}">
                 <i class="fa fa-user"></i>
                 <span class="title">
                     @lang('global.collections.title')

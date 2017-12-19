@@ -2,9 +2,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('global.herbariums.title')</h3>
+    <h3 class="page-title">@lang('global.collections.title')</h3>
     <p>
-        <a href="{{ route('data.herbariums.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
+        <a href="{{ route('data.collections.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
     </p>
 
     <div class="panel panel-default">
@@ -13,39 +13,39 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($herbariums) > 0 ? 'datatable' : '' }} dt-select">
+            <table class="table table-bordered table-striped {{ count($collections) > 0 ? 'datatable' : '' }} dt-select">
                 <thead>
                     <tr>
                         <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
 
-                        <th>@lang('global.herbariums.fields.code')</th>
-                        <th>@lang('global.herbariums.fields.name')</th>
-                        <th>@lang('global.herbariums.fields.curator')</th>
+                        <th>@lang('global.collections.fields.number')</th>
+                        <th>@lang('global.collections.fields.location')</th>
+                        <!-- <th>@lang('global.collections.fields.roles')</th> -->
                         <th>&nbsp;</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
-                    @if (count($herbariums) > 0)
-                        @foreach ($herbariums as $herbarium)
-                            <tr data-entry-id="{{ $herbarium->id }}">
+                    @if (count($collections) > 0)
+                        @foreach ($collections as $collection)
+                            <tr data-entry-id="{{ $collection->id }}">
                                 <td></td>
 
-                                <td>{{ $herbarium->code }}</td>
-                                <td>{{ $herbarium->name }}</td>
-                                <td>
-                                    <!-- @foreach ($user->roles->pluck('name') as $role)
+                                <td>{{ $collection->name }}</td>
+                                <td>{{ $collection->institute }}</td>
+                                <!-- <td>
+                                    @foreach ($user->roles->pluck('name') as $role)
                                         <span class="label label-info label-many">{{ $role }}</span>
                                     @endforeach -->
                                 </td>
                                 <td>
-                                    <a href="{{ route('data.herbariums.edit',[$herbarium->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
+                                    <a href="{{ route('data.collections.edit',[$user->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
                                     {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
-                                        'route' => ['data.herbariums.destroy', $herbarium->id])) !!}
+                                        'route' => ['data.collections.destroy', $collector->id])) !!}
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -65,6 +65,6 @@
 
 @section('javascript')
     <script>
-        window.route_mass_crud_entries_destroy = '{{ route('data.herbariums.mass_destroy') }}';
+        window.route_mass_crud_entries_destroy = '{{ route('data.collections.mass_destroy') }}';
     </script>
 @endsection

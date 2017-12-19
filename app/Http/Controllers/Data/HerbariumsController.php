@@ -26,6 +26,25 @@ class HerbariumsController extends Controller
         return back();
     }
 
+    /**
+     * Delete all selected User at once.
+     *
+     * @param Request $request
+     */
+    public function massDestroy(Request $request)
+    {
+        if (! Gate::allows('users_manage')) {
+            return abort(401);
+        }
+        if ($request->input('ids')) {
+            $entries = Herbariums::whereIn('id', $request->input('ids'))->get();
+
+            foreach ($entries as $entry) {
+                $entry->delete();
+            }
+        }
+    }
+
     public function update()
     {
         # code...

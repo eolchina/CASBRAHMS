@@ -37,6 +37,35 @@ return [
 			'remember-token' => 'Remember token',
 		],
 	],
+
+    'herbariums' => [
+		'title' => 'Herbaria',
+		'created_at' => 'Time',
+		'fields' => [
+			'code' => 'Code',
+			'name' => 'Name',
+			'curator' => 'Curator',
+		],
+	],
+
+    'collectors' => [
+		'title' => 'Collectors',
+		'created_at' => 'Time',
+		'fields' => [
+			'name' => 'Name',
+			'institute' => 'Institue',
+		],
+	],
+
+    'collections' => [
+		'title' => 'Collections',
+		'created_at' => 'Time',
+		'fields' => [
+			'number' => 'Number',
+			'location' => 'Location',
+		],
+	],
+
 	'app_create' => 'Create',
 	'app_save' => 'Save',
 	'app_edit' => 'Edit',

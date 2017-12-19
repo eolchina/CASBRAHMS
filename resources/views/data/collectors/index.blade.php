@@ -27,17 +27,17 @@
                 </thead>
 
                 <tbody>
-                    @if (count($users) > 0)
+                    @if (count($collectors) > 0)
                         @foreach ($collectors as $collector)
                             <tr data-entry-id="{{ $collector->id }}">
                                 <td></td>
 
                                 <td>{{ $collector->name }}</td>
                                 <td>{{ $collector->institute }}</td>
-                                <td>
+                                <!-- <td>
                                     @foreach ($user->roles->pluck('name') as $role)
                                         <span class="label label-info label-many">{{ $role }}</span>
-                                    @endforeach
+                                    @endforeach -->
                                 </td>
                                 <td>
                                     <a href="{{ route('data.collectors.edit',[$user->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
@@ -65,6 +65,6 @@
 
 @section('javascript')
     <script>
-        window.route_mass_crud_entries_destroy = '{{ route('admin.users.mass_destroy') }}';
+        window.route_mass_crud_entries_destroy = '{{ route('data.collectors.mass_destroy') }}';
     </script>
 @endsection

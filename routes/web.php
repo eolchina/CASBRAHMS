@@ -40,22 +40,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 });
 
 // Herbarium Routes
-Route::get('herbariums', 'Data\HerbariumsController@index')->name('herbariums.index');
-Route::post('herbariums', 'Data\herbariumsController@create')->name('herbariums.create');
-Route::get('herbariums', 'Data\herbariumsController@edit')->name('herbariums.edit');
+Route::group(['middleware' => ['auth'], 'prefix' => 'data', 'as' => 'data.'], function(){
+    Route::resource('herbariums', 'Data\HerbariumsController');
+    Route::resource('collectors', 'Data\CollectorsController');
+    Route::resource('collections', 'Data\CollectionsController');
+    Route::post('herbariums_mass_destroy', ['herbariums' => 'Data\HerbariumsController@massDestroy', 'as' => 'herbariums.mass_destroy']);
+    Route::post('collectors_mass_destroy', ['collectors' => 'Data\CollectorsController@massDestroy', 'as' => 'collectors.mass_destroy']);
+    Route::post('collections_mass_destroy', ['collections' => 'Data\CollectionsController@massDestroy', 'as' => 'collections.mass_destroy']);
 
 
+});
 
-// Collector Routes
-Route::get('collectors', 'Data\CollectorsController@index')->name('collectors.index');
-Route::post('collectors', 'Data\CollectorsController@create')->name('collectors.create');
-Route::get('collectors', 'Data\CollectorsController@edit')->name('collectors.edit');
-
-
-// Collections Routes
-Route::get('collections', 'Data\CollectionsController@index')->name('collections.index');
-Route::post('collections', 'Data\CollectionsController@create')->name('collection.create');
-Route::get('collections', 'Data\CollectionsController@edit')->name('collection.edit');
 
 
 
