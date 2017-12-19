@@ -25,11 +25,19 @@
                 </span>
             </a>
         </li>
-        <li class="{{ $request->segment(2) == 'users' ? 'active active-sub' : '' }}">
+        <li class="{{ $request->segment(2) == 'collections' ? 'active active-sub' : '' }}">
             <a href="{{ route('data.collections.index') }}">
                 <i class="fa fa-user"></i>
                 <span class="title">
                     @lang('global.collections.title')
+                </span>
+            </a>
+        </li>
+        <li class="{{ $request->segment(2) == 'specimens' ? 'active active-sub' : '' }}">
+            <a href="{{ route('data.specimens.index') }}">
+                <i class="fa fa-user"></i>
+                <span class="title">
+                    @lang('global.specimens.title')
                 </span>
             </a>
         </li>

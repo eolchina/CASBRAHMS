@@ -16,10 +16,10 @@ class CreateCollectionsTable extends Migration
         // need finely definition of the table field.
         Schema::create('collections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('collector')->nullable();
-            $table->string('number')->nullable();
-            $table->date('date')->nullable();
-            $table->string('location')->nullable();
+            $table->string('collector');
+            $table->string('number');
+            $table->date('date');
+            $table->string('location');
             $table->uuid('coluuid');
             $table->timestamps();
         });

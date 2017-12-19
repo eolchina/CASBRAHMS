@@ -21,6 +21,7 @@
                         <th>@lang('global.herbariums.fields.code')</th>
                         <th>@lang('global.herbariums.fields.name')</th>
                         <th>@lang('global.herbariums.fields.curator')</th>
+                        <th>@lang('global.herbariums.fields.email')</th>
                         <th>&nbsp;</th>
 
                     </tr>
@@ -34,11 +35,9 @@
 
                                 <td>{{ $herbarium->code }}</td>
                                 <td>{{ $herbarium->name }}</td>
-                                <td>
-                                    <!-- @foreach ($user->roles->pluck('name') as $role)
-                                        <span class="label label-info label-many">{{ $role }}</span>
-                                    @endforeach -->
-                                </td>
+                                <td>{{ $herbarium->curator }}</td>
+                                <td>{{ $herbarium->email }}</td>
+
                                 <td>
                                     <a href="{{ route('data.herbariums.edit',[$herbarium->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
                                     {!! Form::open(array(

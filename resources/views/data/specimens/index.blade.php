@@ -2,9 +2,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('global.collections.title')</h3>
+    <h3 class="page-title">@lang('global.specimens.title')</h3>
     <p>
-        <a href="{{ route('data.collections.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
+        <a href="{{ route('data.specimens.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
     </p>
 
     <div class="panel panel-default">
@@ -13,35 +13,35 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($collections) > 0 ? 'datatable' : '' }} dt-select">
+            <table class="table table-bordered table-striped {{ count($specimens) > 0 ? 'datatable' : '' }} dt-select">
                 <thead>
                     <tr>
                         <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
 
-                        <th>@lang('global.collections.fields.number')</th>
-                        <th>@lang('global.collections.fields.date')</th>
-                        <th>@lang('global.collections.fields.location')</th>
+                        <th>@lang('global.specimens.fields.barcode')</th>
+                        <th>@lang('global.specimens.fields.number')</th>
+                        <th>@lang('global.specimens.fields.location')</th>
                         <th>&nbsp;</th>
 
                     </tr>
                 </thead>
 
                 <tbody>
-                    @if (count($collections) > 0)
-                        @foreach ($collections as $collection)
-                            <tr data-entry-id="{{ $collection->id }}">
+                    @if (count($specimens) > 0)
+                        @foreach ($specimens as $specimen)
+                            <tr data-entry-id="{{ $specimen->id }}">
                                 <td></td>
 
-                                <td>{{ $collection->number }}</td>
-                                <td>{{ $collection->date }}</td>
-                                <td>{{ $collection->location }}</td>
+                                <td>{{ $specimen->barcode }}</td>
+                                <td>{{ $specimen->number }}</td>
+                                <td>{{ $specimen->location }} </td>
                                 <td>
-                                    <a href="{{ route('data.collections.edit',[$collection->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
+                                    <a href="{{ route('data.specimens.edit',[$specimen->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
                                     {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
-                                        'route' => ['data.collections.destroy', $collection->id])) !!}
+                                        'route' => ['data.specimens.destroy', $specimen->id])) !!}
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -61,6 +61,6 @@
 
 @section('javascript')
     <script>
-        window.route_mass_crud_entries_destroy = '{{ route('data.collections.mass_destroy') }}';
+        window.route_mass_crud_entries_destroy = '{{ route('data.specimens.mass_destroy') }}';
     </script>
 @endsection

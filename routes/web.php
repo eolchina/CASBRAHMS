@@ -44,9 +44,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'data', 'as' => 'data.'], fu
     Route::resource('herbariums', 'Data\HerbariumsController');
     Route::resource('collectors', 'Data\CollectorsController');
     Route::resource('collections', 'Data\CollectionsController');
+    Route::resource('specimens', 'Data\SpecimensController');
     Route::post('herbariums_mass_destroy', ['herbariums' => 'Data\HerbariumsController@massDestroy', 'as' => 'herbariums.mass_destroy']);
     Route::post('collectors_mass_destroy', ['collectors' => 'Data\CollectorsController@massDestroy', 'as' => 'collectors.mass_destroy']);
     Route::post('collections_mass_destroy', ['collections' => 'Data\CollectionsController@massDestroy', 'as' => 'collections.mass_destroy']);
+    Route::post('specimens_mass_destroy', ['specimens' => 'Data\SpecimensController@massDestroy', 'as' => 'specimens.mass_destroy']);
 
 
 });

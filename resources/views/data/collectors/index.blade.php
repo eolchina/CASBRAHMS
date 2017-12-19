@@ -20,7 +20,7 @@
 
                         <th>@lang('global.collectors.fields.name')</th>
                         <th>@lang('global.collectors.fields.institute')</th>
-                        <!-- <th>@lang('global.collectors.fields.roles')</th> -->
+                        <th>@lang('global.collectors.fields.abbreviation')</th>
                         <th>&nbsp;</th>
 
                     </tr>
@@ -34,13 +34,9 @@
 
                                 <td>{{ $collector->name }}</td>
                                 <td>{{ $collector->institute }}</td>
-                                <!-- <td>
-                                    @foreach ($user->roles->pluck('name') as $role)
-                                        <span class="label label-info label-many">{{ $role }}</span>
-                                    @endforeach -->
-                                </td>
+                                <td>{{ $collector->abbreviation }} </td>
                                 <td>
-                                    <a href="{{ route('data.collectors.edit',[$user->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
+                                    <a href="{{ route('data.collectors.edit',[$collector->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
                                     {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',

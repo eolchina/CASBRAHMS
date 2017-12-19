@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Data;
 
 use Illuminate\Http\Request;
 use App\Models\Herbarium;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Data\StoreHerbariumsRequest;
+use App\Http\Requests\Data\UpdateHerbariumsRequest;
 
 class HerbariumsController extends Controller
 {
@@ -13,6 +16,25 @@ class HerbariumsController extends Controller
     {
         $herbariums = Herbarium::all();
         return view('data.herbariums.index', compact('herbariums'));
+    }
+
+    public function create()
+    {
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+
+        return view('data.herbariums.create');
+    }
+
+    public function store(StoreHerbariumsRequest $request)
+    {
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+        $herbarium = Herbarium::create($request->all());
+
+        return redirect()->route('data.herbariums.index');
     }
 
     public function edit(Herbarium $herbarium)
@@ -43,10 +65,5 @@ class HerbariumsController extends Controller
                 $entry->delete();
             }
         }
-    }
-
-    public function update()
-    {
-        # code...
     }
 }

@@ -12,5 +12,8 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         Bouncer::allow('administrator')->to('users_manage');
+        Bouncer::allow('curator')->to('herbariums_manage');
+        Bouncer::allow('expert')->to('data_manage');
+
     }
 }

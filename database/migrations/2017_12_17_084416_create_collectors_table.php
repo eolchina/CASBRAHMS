@@ -15,8 +15,9 @@ class CreateCollectorsTable extends Migration
     {
         Schema::create('collectors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('institute')->nullable();
+            $table->string('name');
+            $table->string('abbreviation');
+            $table->string('institute');
             $table->timestamps();
         });
     }

@@ -45,6 +45,7 @@ return [
 			'code' => 'Code',
 			'name' => 'Name',
 			'curator' => 'Curator',
+            'email' => 'Email',
 		],
 	],
 
@@ -53,6 +54,7 @@ return [
 		'created_at' => 'Time',
 		'fields' => [
 			'name' => 'Name',
+            'abbreviation' => 'Standard Abbreviation',
 			'institute' => 'Institue',
 		],
 	],
@@ -62,6 +64,18 @@ return [
 		'created_at' => 'Time',
 		'fields' => [
 			'number' => 'Number',
+            'date' => 'Collection Date',
+			'location' => 'Location',
+		],
+	],
+
+    'specimens' => [
+		'title' => 'Specimens',
+		'created_at' => 'Time',
+		'fields' => [
+            'barcode' => 'Barcode',
+			'number' => 'Number',
+            'date' => 'Collection Date',
 			'location' => 'Location',
 		],
 	],
