@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Data;
 
 use Illuminate\Http\Request;
 use App\Models\Collector;
+use App\Http\Controllers\Controller;
 
 class CollectorsController extends Controller
 {
@@ -14,8 +15,8 @@ class CollectorsController extends Controller
      */
     public function index()
     {
-        $collectors = Collector::paginate(10);
-        return view('collector.index', compact('collector'));
+        $collectors = Collector::all();
+        return view('data.collectors.index', compact('collectors'));
     }
 
     /**

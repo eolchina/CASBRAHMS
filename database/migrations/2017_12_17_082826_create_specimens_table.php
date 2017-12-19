@@ -15,12 +15,14 @@ class CreateSpecimensTable extends Migration
     {
         Schema::create('specimens', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('barcode');
             $table->string('collector')->nullable();
             $table->string('number')->nullable();
             $table->date('date')->nullable();
             $table->string('location')->nullable();
             $table->uuid('smuuid');
             $table->integer('collection_id')->index();
+            $table->integer('herbarium_id')->index();
             $table->timestamps();
         });
     }

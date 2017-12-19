@@ -39,6 +39,26 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 });
 
+// Herbarium Routes
+Route::get('herbariums', 'Data\HerbariumsController@index')->name('herbariums.index');
+Route::post('herbariums', 'Data\herbariumsController@create')->name('herbariums.create');
+Route::get('herbariums', 'Data\herbariumsController@edit')->name('herbariums.edit');
+
+
+
+// Collector Routes
+Route::get('collectors', 'Data\CollectorsController@index')->name('collectors.index');
+Route::post('collectors', 'Data\CollectorsController@create')->name('collectors.create');
+Route::get('collectors', 'Data\CollectorsController@edit')->name('collectors.edit');
+
+
+// Collections Routes
+Route::get('collections', 'Data\CollectionsController@index')->name('collections.index');
+Route::post('collections', 'Data\CollectionsController@create')->name('collection.create');
+Route::get('collections', 'Data\CollectionsController@edit')->name('collection.edit');
+
+
+
 // old route config.
 
 // Route::get('/', 'StaticPagesController@home')->name('home');

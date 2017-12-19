@@ -11,4 +11,9 @@ class Specimen extends Model
     {
         return $this->belongsTo(Collection::class);
     }
+
+    public function herbarium()
+    {
+        return $this->belongsTo(Herbarium::class);
+    }
 }

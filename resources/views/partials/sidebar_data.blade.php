@@ -1,4 +1,4 @@
-<!-- the third dashboard group -->
+<!-- the collection data management dashboard group -->
 <li class="treeview">
     <a href="#">
         <i class="fa fa-edit"></i>
@@ -9,27 +9,27 @@
     </a>
     <ul class="treeview-menu">
 
-        <li class="{{ $request->segment(2) == 'abilities' ? 'active active-sub' : '' }}">
-            <a href="{{ route('admin.abilities.index') }}">
+        <li class="{{ $request->segment(2) == 'herbariums' ? 'active active-sub' : '' }}">
+            <a href="{{ route('herbariums.index') }}">
                 <i class="fa fa-briefcase"></i>
                 <span class="title">
-                    @lang('global.abilities.title')
+                    @lang('global.herbariums.title')
                 </span>
             </a>
         </li>
-        <li class="{{ $request->segment(2) == 'roles' ? 'active active-sub' : '' }}">
-            <a href="{{ route('admin.roles.index') }}">
+        <li class="{{ $request->segment(2) == 'collectors' ? 'active active-sub' : '' }}">
+            <a href="{{ route('collectors.index') }}">
                 <i class="fa fa-briefcase"></i>
                 <span class="title">
-                    @lang('global.roles.title')
+                    @lang('global.collectors.title')
                 </span>
             </a>
         </li>
         <li class="{{ $request->segment(2) == 'users' ? 'active active-sub' : '' }}">
-            <a href="{{ route('admin.users.index') }}">
+            <a href="{{ route('collections.index') }}">
                 <i class="fa fa-user"></i>
                 <span class="title">
-                    @lang('global.users.title')
+                    @lang('global.collections.title')
                 </span>
             </a>
         </li>
