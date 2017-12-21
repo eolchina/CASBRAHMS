@@ -21,7 +21,7 @@
                         <th>@lang('global.users.fields.name')</th>
                         <th>@lang('global.users.fields.email')</th>
                         <th>@lang('global.users.fields.roles')</th>
-                        <th>&nbsp;</th>
+                        <th>Action&nbsp;</th>
 
                     </tr>
                 </thead>
