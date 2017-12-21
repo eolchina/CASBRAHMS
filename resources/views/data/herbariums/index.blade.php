@@ -9,7 +9,8 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            @lang('global.app_list')
+            @lang('global.app_list') <a href="{{ route('data.herbariums.create') }}" class="btn btn-xs btn-success pull-right">@lang('global.app_add_new')</a>
+
         </div>
 
         <div class="panel-body table-responsive">
@@ -22,7 +23,7 @@
                         <th>@lang('global.herbariums.fields.name')</th>
                         <th>@lang('global.herbariums.fields.curator')</th>
                         <th>@lang('global.herbariums.fields.email')</th>
-                        <th>&nbsp;</th>
+                        <th>@lang('global.app_action')</th>
 
                     </tr>
                 </thead>
@@ -47,6 +48,12 @@
                                         'route' => ['data.herbariums.destroy', $herbarium->id])) !!}
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
+                                </td>
+                                <td>
+                                    <a href="{{ route('data.herbariums.edit',[$herbarium->id])}}" class="fa fa-edit"></a>
+                                    <a href="{{ route('data.herbariums.destroy', [$herbarium->id])}}" class="fa fa-trash"></a>
+
+
                                 </td>
 
                             </tr>

@@ -86,6 +86,7 @@ return [
 	'app_view' => 'View',
 	'app_update' => 'Update',
 	'app_list' => 'List',
+    'app_action' => 'Action',
 	'app_no_entries_in_table' => 'No entries in table',
 	'custom_controller_index' => 'Custom controller index.',
 	'app_logout' => 'Logout',

@@ -37,15 +37,26 @@ class HerbariumsController extends Controller
         return redirect()->route('data.herbariums.index');
     }
 
-    public function edit(Herbarium $herbarium)
+    public function edit($id)
     {
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+
+        $herbarium = Herbarium::findOrFail($id);
+
         return view('data.herbariums.edit', compact('herbarium'));
     }
 
-    public function destroy(Herbarium $herbarium)
+    public function destroy($id)
     {
+       if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+        $herbarium = Herbarium::findOrFail($id);
         $herbarium->delete();
-        return back();
+
+        return redirect()->route('data.herbariums.index');
     }
 
 
