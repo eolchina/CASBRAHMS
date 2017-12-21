@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Data;
 use Illuminate\Http\Request;
 use App\Models\Collector;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\Data\StoreCollectorsRequest;
+use App\Http\Requests\Data\UpdateCollectosRequest;
 
 class CollectorsController extends Controller
 {
@@ -26,7 +29,10 @@ class CollectorsController extends Controller
      */
     public function create()
     {
-        //
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+         return view('data.collectors.create');
     }
 
     /**
@@ -35,9 +41,14 @@ class CollectorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCollectorsRequest $request)
     {
-        //
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+        $collector = Collector::create($request->all());
+
+        return redirect()->route('data.collectors.index');
     }
 
     /**
@@ -57,9 +68,10 @@ class CollectorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Collector $collector)
     {
-        //
+
+        return view('data.collectors.edit', compact('collector'));
     }
 
     /**
@@ -69,9 +81,15 @@ class CollectorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCollectorRequest $request, $id)
     {
-        //
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+
+        $collector = Collector::findOrFail($id);
+        $collector->update($request->all());
+        return redirect('data.collectors.index');
     }
 
     /**

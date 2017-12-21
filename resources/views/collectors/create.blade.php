@@ -1,39 +1,54 @@
-@extends('layouts.default')
-@section('title','注册')
+@extends('layouts.app')
 
 @section('content')
-<div class="col-md-offset-2 col-md-8">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h5>注册</h5>
+    <h3 class="page-title">@lang('global.collectors.title')</h3>
+    {!! Form::open(['method' => 'POST', 'route' => ['data.collectors.store']]) !!}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @lang('global.app_create')
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('name', 'Name*', ['class' => 'control-label']) !!}
+                    {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('name'))
+                        <p class="help-block">
+                            {{ $errors->first('name') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('abbreviation', 'Abbreviation*', ['class' => 'control-label']) !!}
+                    {!! Form::text('abbreviation', old('abbreviation'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('abbreviation'))
+                        <p class="help-block">
+                            {{ $errors->first('abbreviation') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('institute', 'institute*', ['class' => 'control-label']) !!}
+                    {!! Form::text('institute', old('institute'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('institute'))
+                        <p class="help-block">
+                            {{ $errors->first('institute') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="panel-body">
-        @include('shared._errors')
-      <form method="POST" action="{{ route('users.store') }}">
-          {{ csrf_field() }}
-          <div class="form-group">
-            <label for="name">名称：</label>
-            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
-          </div>
 
-          <div class="form-group">
-            <label for="email">邮箱：</label>
-            <input type="text" name="email" class="form-control" value="{{ old('email') }}">
-          </div>
-
-          <div class="form-group">
-            <label for="password">密码：</label>
-            <input type="password" name="password" class="form-control" value="{{ old('password') }}">
-          </div>
-
-          <div class="form-group">
-            <label for="password_confirmation">确认密码：</label>
-            <input type="password" name="password_confirmation" class="form-control" value="{{ old('password_confirmation') }}">
-          </div>
-
-          <button type="submit" class="btn btn-primary">注册</button>
-      </form>
-    </div>
-  </div>
-</div>
+    {!! Form::submit(trans('global.app_save'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!}
 @stop

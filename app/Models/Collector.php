@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Collector extends Model
 {
+    protected $fillable = ['name', 'abbreviation', 'institute'];
 
     public function collections()
     {

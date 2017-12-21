@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">@lang('global.users.title')</h3>
-    {!! Form::open(['method' => 'POST', 'route' => ['admin.users.store']]) !!}
+    <h3 class="page-title">@lang('global.collectors.title')</h3>
+    {!! Form::open(['method' => 'POST', 'route' => ['data.collectors.store']]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -24,36 +24,24 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('email', 'Email*', ['class' => 'control-label']) !!}
-                    {!! Form::email('email', old('email'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::label('abbreviation', 'Abbreviation*', ['class' => 'control-label']) !!}
+                    {!! Form::text('abbreviation', old('abbreviation'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('email'))
+                    @if($errors->has('abbreviation'))
                         <p class="help-block">
-                            {{ $errors->first('email') }}
+                            {{ $errors->first('abbreviation') }}
                         </p>
                     @endif
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('password', 'Password*', ['class' => 'control-label']) !!}
-                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    {!! Form::label('institute', 'Institute*', ['class' => 'control-label']) !!}
+                    {!! Form::text('institute', old('institute'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('password'))
+                    @if($errors->has('institute'))
                         <p class="help-block">
-                            {{ $errors->first('password') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('roles', 'Roles*', ['class' => 'control-label']) !!}
-                    {!! Form::select('roles[]', $roles, old('roles'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'required' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('roles'))
-                        <p class="help-block">
-                            {{ $errors->first('roles') }}
+                            {{ $errors->first('institute') }}
                         </p>
                     @endif
                 </div>

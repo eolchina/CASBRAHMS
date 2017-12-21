@@ -48,6 +48,18 @@ class HerbariumsController extends Controller
         return back();
     }
 
+
+    public function update(UpdateHerbariumsRequest $request, $id)
+    {
+        if (! Gate::allows('herbariums_manage')) {
+            return abort(401);
+        }
+
+        $herbarium = Herbarium::findOrFail($id);
+        $herbarium->update($request->all());
+        return redirect()->route('data.herbariums.index');
+    }
+
     /**
      * Delete all selected User at once.
      *
