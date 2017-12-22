@@ -135,7 +135,8 @@
                             <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
                             <p>
                                 {{ Auth::user()->name }}
-                                {{ Auth::user()->roles->pluck('name')}}
+                                {{ count(Auth::user()->roles->pluck('name')) > 0 ? Auth::user()->roles->pluck('name') : ''}}
+                                {{-- {{ Auth::user()->roles->pluck('name')}} --}}
                                 <small>Member since {{ Auth::user()->created_at }}</small>
                             </p>
                         </li>

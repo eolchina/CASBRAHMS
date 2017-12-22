@@ -11,7 +11,17 @@
 |
 */
 
-Route::get('/', function () { return redirect('admin/home'); });
+Route::get('/', function () {
+    return view('welcome');
+
+});
+// Route::get('/', function () { return redirect('admin/home'); });
+
+//Register Routes
+$this->get('register', 'Auth\RegisterController@showRegisterForm')->name('register');
+$this->post('register', 'Auth\RegisterController@postRegister');
+
+
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('auth.login');
