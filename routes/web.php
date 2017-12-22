@@ -65,10 +65,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'data', 'as' => 'data.'], fu
 
 
 //Taxonomyterms route
-Route::get('taxonomyterms', 'Data\TaxonomytermsController@index')->name('data.taxonomyterms');
-Route::get('taxonomyterms/data', 'Data\TaxonomytermsController@data');
+// Route::get('taxonomyterms', 'Data\TaxonomytermsController@index')->name('data.taxonomyterms');
+// Route::get('taxonomyterms/data', 'Data\TaxonomytermsController@data');
 
-// Route::resource('taxonomyterms', 'Data\TaxonomytermsController');
+Route::resource('taxonomyterms', 'Data\TaxonomytermsController');
 
 // Route::controller('taxonomyterms', 'TaxonomytermsController', [
 //     'anyData'  => 'datatables.data',
